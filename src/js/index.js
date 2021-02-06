@@ -1,6 +1,6 @@
 //import react into the bundle
-import React from "react";
 import ReactDOM from "react-dom";
+import React, { useState } from "react";
 
 //include bootstrap npm library into the bundle
 import "bootstrap";
@@ -8,8 +8,27 @@ import "bootstrap";
 //include your index.scss file into the bundle
 import "../styles/index.scss";
 
-//import your own components
-import { Home } from "./component/home.js";
+const Traffic = () => {
+	const [color, setColor] = useState("");
+	return (
+		<>
+			<div className="trafficTop"></div>
+			<div className="container">
+				<div
+					className={`red ${color === "red" ? "selected" : ""}`}
+					onClick={() => setColor("red")}></div>
+				<div
+					className={`yellow ${color === "yellow" ? "selected" : ""}`}
+					onClick={() => setColor("yellow")}></div>
+				<div
+					className={`green ${color === "green" ? "selected" : ""}`}
+					onClick={() => setColor("green")}></div>
+			</div>
+		</>
+	);
+};
+
+export default Traffic;
 
 //render your react application
-ReactDOM.render(<Home />, document.querySelector("#app"));
+ReactDOM.render(<Traffic />, document.querySelector("#app"));
